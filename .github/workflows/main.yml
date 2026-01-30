@@ -28,10 +28,10 @@ jobs:
       run: |
         # 파일명을 naver_1.0.py로 정확히 지정했습니다.
         # --name 옵션은 최종 결과물 파일의 이름을 결정합니다.
-        pyinstaller --onefile --windowed --collect-all tkinter --name "NaverBot_Mac" naver_1.0.py
+        pyinstaller --onefile --windowed --collect-all tkinter --name "naver_1.0" naver_1.0.py
 
     - name: Upload Result
       uses: actions/upload-artifact@v4
       with:
-        name: NaverBot-Mac-App
+        name: naver_1.0
         path: dist/NaverBot_Mac
