@@ -11,10 +11,10 @@ jobs:
 
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v4  # v3에서 v4로 업데이트
+      uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v5 # v4에서 v5로 업데이트
+      uses: actions/setup-python@v5
       with:
         python-version: '3.11'
 
@@ -25,11 +25,11 @@ jobs:
 
     - name: Build with PyInstaller
       run: |
-        # 파일명이 naver1.0.py가 맞는지 꼭 확인하세요!
-        pyinstaller --onefile --windowed --collect-all tkinter --name "NaverBot_Mac" naver1.0.py
+        # 실제 파일 이름인 naver_1.0.py로 수정했습니다!
+        pyinstaller --onefile --windowed --collect-all tkinter --name "NaverBot_Mac" naver_1.0.py
 
     - name: Upload Result
-      uses: actions/upload-artifact@v4  # 에러가 났던 v3를 v4로 완벽 교체
+      uses: actions/upload-artifact@v4
       with:
         name: NaverBot-Mac-App
         path: dist/NaverBot_Mac
