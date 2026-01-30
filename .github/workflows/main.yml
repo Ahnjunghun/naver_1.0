@@ -21,11 +21,13 @@ jobs:
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
+        # 필요한 라이브러리들을 설치합니다.
         pip install pyinstaller pandas openpyxl selenium setuptools
 
     - name: Build with PyInstaller
       run: |
-        # 실제 파일 이름인 naver_1.0.py로 수정했습니다!
+        # 파일명을 naver_1.0.py로 정확히 지정했습니다.
+        # --name 옵션은 최종 결과물 파일의 이름을 결정합니다.
         pyinstaller --onefile --windowed --collect-all tkinter --name "NaverBot_Mac" naver_1.0.py
 
     - name: Upload Result
