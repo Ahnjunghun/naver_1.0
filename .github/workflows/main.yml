@@ -2,30 +2,34 @@ name: Build Mac Executable
 
 on:
   push:
-    branches: [ main ]  # main 브랜치에 코드가 올라오면 실행
+    branches: [ main ]
+  workflow_dispatch: 
 
 jobs:
   build:
-    runs-on: macos-latest  # 맥 OS 서버에서 실행
+    runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout Code
+      uses: actions/checkout@v4  # v3에서 v4로 업데이트
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5 # v4에서 v5로 업데이트
       with:
-        python-version: '3.10'
+        python-version: '3.11'
 
     - name: Install Dependencies
       run: |
-        pip install pyinstaller pandas openpyxl selenium
+        python -m pip install --upgrade pip
+        pip install pyinstaller pandas openpyxl selenium setuptools
 
     - name: Build with PyInstaller
       run: |
-        pyinstaller --onefile --noconsole --collect-all tkinter naver1.0.py
+        # 파일명이 naver1.0.py가 맞는지 꼭 확인하세요!
+        pyinstaller --onefile --windowed --collect-all tkinter --name "NaverBot_Mac" naver1.0.py
 
     - name: Upload Result
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4  # 에러가 났던 v3를 v4로 완벽 교체
       with:
-        name: NaverBot-Mac
-        path: dist/naver1.0  # 빌드된 파일 경로
+        name: NaverBot-Mac-App
+        path: dist/NaverBot_Mac
