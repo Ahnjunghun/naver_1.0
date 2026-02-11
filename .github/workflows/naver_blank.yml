@@ -1,5 +1,6 @@
 name: Build Mac App naver_blank
 
+
 on:
   push:
     branches: [ main ] # main 브랜치에 푸시될 때 빌드 시작
