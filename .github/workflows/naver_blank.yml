@@ -1,0 +1,38 @@
+name: Build Mac App naver_blank
+
+on:
+  push:
+    branches: [ main ] # main 브랜치에 푸시될 때 빌드 시작
+
+jobs:
+  build:
+    runs-on: macos-latest # 빌드 환경을 macOS로 설정
+
+    steps:
+      # 1. 코드 가져오기
+      - uses: actions/checkout@v3
+      
+      # 2. 파이썬 설치
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # 3. 필요한 라이브러리 설치
+      - name: Install dependencies
+        run: |
+          pip install selenium pandas openpyxl pyinstaller
+
+      # 4. PyInstaller로 .app 파일 빌드
+      - name: Build with PyInstaller
+        run: |
+          # --- [수정] 파일명 오타 수정! ---
+          pyinstaller --noconfirm --onefile --windowed naver_blank.py
+          # --------------------------------
+
+      # 5. 빌드된 .app 파일을 저장소에 저장 (Artifact)
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: naver_blank_mac  # <--- [수정] 결과물 이름도 통일!
+          path: dist/naver_blank.app # 최종 결과물 위치
