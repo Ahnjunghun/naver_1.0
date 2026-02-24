@@ -28,12 +28,12 @@ jobs:
       - name: Build with PyInstaller
         run: |
           # --- [수정] 파일명 오타 수정! ---
-          pyinstaller --noconfirm --onefile --windowed naver_blank.py
+          pyinstaller --noconfirm --onefile --windowed naver_blank2.py
           # --------------------------------
 
       # 5. 빌드된 .app 파일을 저장소에 저장 (Artifact)
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: naver_blank_mac  # <--- [수정] 결과물 이름도 통일!
-          path: dist/naver_blank.app # 최종 결과물 위치
+          name: naver_blank2_mac  # <--- [수정] 결과물 이름도 통일!
+          path: dist/naver_blank2.app # 최종 결과물 위치
