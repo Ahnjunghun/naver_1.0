@@ -5,6 +5,7 @@ on:
     tags:
       - 'v*' # v1.0, v2.0 등 태그를 push하면 빌드 시작
 
+
 jobs:
   build-mac:
     runs-on: macos-latest
