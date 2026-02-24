@@ -25,10 +25,10 @@ jobs:
     - name: 맥용 앱 빌드 시작
       run: |
         # --name 뒤에 원하는 파일명을 넣었어
-        pyinstaller --noconfirm --onefile --windowed --name "cou_exe2_mac" cou_exe_test2.py
+        pyinstaller --noconfirm --onefile --windowed --name "kully_1_mac" kully_1.py
 
     - name: 빌드 결과물을 깃허브에 올리기
       uses: actions/upload-artifact@v4
       with:
-        name: cou_exe2_mac_app
-        path: dist/cou_exe2_mac  # 빌드된 파일 위치
+        name: kully_1_mac_app
+        path: dist/kully_1_mac  # 빌드된 파일 위치
